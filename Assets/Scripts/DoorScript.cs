@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowPhysics : MonoBehaviour
+public class DoorScript : MonoBehaviour
 {
-    public Transform target;
-    Rigidbody rb;
     // Start is called before the first frame update
+    public GameObject door;
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        door.SetActive(true);
     }
 
     // Update is called once per frame
@@ -17,8 +16,8 @@ public class FollowPhysics : MonoBehaviour
     {
         
     }
-    
-    void FixedUbdate(){
-        rb.MovePosition(target.transform.position);
+
+    public void PushButton(){
+        door.SetActive(false);
     }
 }
