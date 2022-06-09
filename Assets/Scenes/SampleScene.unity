@@ -394,6 +394,12 @@ MonoBehaviour:
   cube1: {fileID: 1420491510}
   cube2: {fileID: 2130557135}
   cube3: {fileID: 810082359}
+  materials:
+  - {fileID: 2100000, guid: 0066bacc1d5fc4644948eaee1f667052, type: 2}
+  - {fileID: 2100000, guid: a86f23e51babc544a8f3e240ffe9b263, type: 2}
+  - {fileID: 2100000, guid: 2512827267cc0da4a90ecb92fd35043b, type: 2}
+  - {fileID: 2100000, guid: 89681c510a2d4144f82986df469f44a1, type: 2}
+  - {fileID: 2100000, guid: 646da484d21bf48d887dedfb481d78f8, type: 2}
 --- !u!82 &230426215
 AudioSource:
   m_ObjectHideFlags: 0

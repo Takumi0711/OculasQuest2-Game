@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class ButtonManager : MonoBehaviour
 {
     public GameObject button; //ボタン
-    public UnityEvent onPress; //ボタンを押したときのイベント
+    public UnityEvent onPress; //ボタンを押したときのイベント（これは今回設定してない）
     public UnityEvent onRelease;
     GameObject presser;
     AudioSource sound;
@@ -18,6 +18,9 @@ public class ButtonManager : MonoBehaviour
     public GameObject cube1;
     public GameObject cube2;
     public GameObject cube3;
+
+    public Material[] materials = new Material[5];
+    //5種類のマテリアルを設定
 
     void Start()
     {
