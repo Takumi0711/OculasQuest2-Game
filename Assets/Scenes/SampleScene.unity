@@ -381,7 +381,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 230426214}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: SpawnSphere
+        m_MethodName: ChangeColor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

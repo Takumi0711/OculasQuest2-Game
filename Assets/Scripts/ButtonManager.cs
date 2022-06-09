@@ -62,7 +62,7 @@ public class ButtonManager : MonoBehaviour
     }
 
     public void ChangeColor(){
-        
+        cube1.GetComponent<Renderer>().material.color = Color.red;
     }
    
 }
