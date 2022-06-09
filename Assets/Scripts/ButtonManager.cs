@@ -15,17 +15,30 @@ public class ButtonManager : MonoBehaviour
     //boolはフラグ立て
 
     //色を変えるためのキューブ
-    public GameObject cube1;
-    public GameObject cube2;
-    public GameObject cube3;
+    public GameObject[] cube = new GameObject[3];
 
     public Material[] materials = new Material[5];
     //5種類のマテリアルを設定
+
+    private const int COLOR_RED = 0;
+    private const int COLOR_BLUE = 1;
+    private const int COLOR_GREEN = 2;
+    private const int COLOR_WHITE = 3;
+    private const int COLOR_BLACK = 4;
+    //色に番号を付ける
+
+    private int[] cubeColor = new int[3];
+    //cubeColor[0]はCube1
 
     void Start()
     {
         sound = GetComponent<AudioSource>();
         isPressed = false;
+
+        cubeColor[0] = COLOR_RED;
+        cubeColor[1] = COLOR_BLUE;
+        cubeColor[2] = COLOR_GREEN;
+        //cubeの持つ初期値を設定した
     }
 
     private void OnTriggerEnter(Collider other){
@@ -64,8 +77,19 @@ public class ButtonManager : MonoBehaviour
         sphere.AddComponent<Rigidbody>();
     }
 
-    public void ChangeColor(){
-        cube1.GetComponent<Renderer>().material.color = Color.red;
+    public void PushButton1(){ 
+        ChangeColor(0);
+    }
+
+    public void ChangeColor(int buttonNo){
+        cubeColor[buttonNo] += 1;
+        if(cubeColor[buttonNo] < COLOR_BLACK){
+            cube[buttonNo].GetComponent<Renderer>().material.color = Color.materials[cubeColor[buttonNo]];
+        }
+        else{
+            cube[buttonNo].GetComponent<Renderer>().material.color = Color.red;
+        }
+
     }
    
 }

@@ -381,7 +381,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 230426214}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: ChangeColor
+        m_MethodName: PushButton1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -391,9 +391,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  cube1: {fileID: 1420491510}
-  cube2: {fileID: 2130557135}
-  cube3: {fileID: 810082359}
+  cube:
+  - {fileID: 1420491510}
+  - {fileID: 2130557135}
+  - {fileID: 810082359}
   materials:
   - {fileID: 2100000, guid: 0066bacc1d5fc4644948eaee1f667052, type: 2}
   - {fileID: 2100000, guid: a86f23e51babc544a8f3e240ffe9b263, type: 2}
@@ -1456,7 +1457,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f0e40fc865770de4cb1577c051163a9d, type: 2}
+  - {fileID: 2100000, guid: 2512827267cc0da4a90ecb92fd35043b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1969,7 +1970,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 89681c510a2d4144f82986df469f44a1, type: 2}
+  - {fileID: 2100000, guid: 0066bacc1d5fc4644948eaee1f667052, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2299,7 +2300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f155df7d552eed4b8ea38bd22841c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   cameraC: {fileID: 1195549499}
 --- !u!143 &1595687098
 CharacterController:
@@ -2951,7 +2952,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1a96f2c436c09b745985d5faf060545d, type: 2}
+  - {fileID: 2100000, guid: 1b68ffca77c4c6344af03830dbeca2ca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
