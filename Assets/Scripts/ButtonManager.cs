@@ -30,7 +30,7 @@ public class ButtonManager : MonoBehaviour
     private const int COLOR_WHITE = 3;
     //色に番号を付ける
 
-    private int[] cubeColor = new int[4];
+    private int[] cubeColor = new int[3];
     //cubeColor[0]はCube1
 
     void Start()
@@ -38,10 +38,10 @@ public class ButtonManager : MonoBehaviour
         sound = GetComponent<AudioSource>();
         isPressed = false;
 
-        cubeColor[0] = COLOR_RED;
+        cubeColor[0] = COLOR_RED;//つまり、cubeColor[0]は0ということ
         cubeColor[1] = COLOR_BLUE;
         cubeColor[2] = COLOR_GREEN;
-        //cubeの持つ初期値を設定した
+        //cubeColorの値を＋していくことで判定する
 
         door.SetActive(true);
         doseOpenDoor = false;
@@ -96,20 +96,23 @@ public class ButtonManager : MonoBehaviour
     }
 
     public void ChangeColor(int buttonNo){//キューブの色を変更
-        cubeColor[buttonNo] += 1;
+        cubeColor[buttonNo]= cubeColor[buttonNo] + 1;
+        
         if(cubeColor[buttonNo] > COLOR_WHITE){
             cubeColor[buttonNo] = COLOR_RED;//cubeColorがオーバーフローしたときに0にする
         }
+        
         cube[buttonNo].GetComponent<Renderer>().material.color = materials[cubeColor[buttonNo]].color;
         //<Renderer>().materialで呼び出すと複製され続けてしまうため、Destroyしなければならない
 
-        if((cubeColor[0] == COLOR_BLUE)
-        &&(cubeColor[1] == COLOR_WHITE)
-        &&(cubeColor[2] == COLOR_RED)){
+        if((cube[0].GetComponent<Renderer>().material.color == materials[1].color)
+        // cube[0]のマテリアルが、初期に設定したmaterials[1]
+        &&(cube[1].GetComponent<Renderer>().material.color == materials[3].color)
+        &&(cube[2].GetComponent<Renderer>().material.color == materials[0].color)){
             if(doseOpenDoor == false){
                 door.SetActive(false);
+                //ドアを削除
                 doseOpenDoor = true;
-                Debug.Log("動作している");
             }
         }
     }
