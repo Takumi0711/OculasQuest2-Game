@@ -17,17 +17,17 @@ public class ButtonManager : MonoBehaviour
     //色を変えるためのキューブ
     public GameObject[] cube = new GameObject[3];
 
-    public Material[] materials = new Material[5];
-    //5種類のマテリアルを設定
+    public Material[] materials = new Material[4];
+    //4種類のマテリアルを設定
+
 
     private const int COLOR_RED = 0;
     private const int COLOR_BLUE = 1;
     private const int COLOR_GREEN = 2;
     private const int COLOR_WHITE = 3;
-    private const int COLOR_BLACK = 4;
     //色に番号を付ける
 
-    private int[] cubeColor = new int[3];
+    private int[] cubeColor = new int[4];
     //cubeColor[0]はCube1
 
     void Start()
@@ -81,15 +81,24 @@ public class ButtonManager : MonoBehaviour
         ChangeColor(0);
     }
 
+    public void PushButton2(){ 
+        ChangeColor(1);
+    }
+
+    public void PushButton3(){ 
+        ChangeColor(2);
+    }
+
     public void ChangeColor(int buttonNo){
         cubeColor[buttonNo] += 1;
-        if(cubeColor[buttonNo] < COLOR_BLACK){
-            cube[buttonNo].GetComponent<Renderer>().material.color = Color.materials[cubeColor[buttonNo]];
+        if(cubeColor[buttonNo] <= COLOR_WHITE){
+            cube[buttonNo].GetComponent<Renderer>().material.color = materials[cubeColor[buttonNo]].color;
         }
         else{
-            cube[buttonNo].GetComponent<Renderer>().material.color = Color.red;
+            cube[buttonNo].GetComponent<Renderer>().material.color = materials[0].color;
+            cubeColor[buttonNo] = COLOR_RED;
         }
-
+    
     }
    
 }
