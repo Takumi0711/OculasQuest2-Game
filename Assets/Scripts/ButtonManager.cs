@@ -6,6 +6,9 @@ using UnityEngine.Events;
 
 public class ButtonManager : MonoBehaviour
 {
+    public GameObject door;
+    bool doseOpenDoor;
+
     public GameObject button; //ボタン
     public UnityEvent onPress; //ボタンを押したときのイベント（これは今回設定してない）
     public UnityEvent onRelease;
@@ -39,6 +42,9 @@ public class ButtonManager : MonoBehaviour
         cubeColor[1] = COLOR_BLUE;
         cubeColor[2] = COLOR_GREEN;
         //cubeの持つ初期値を設定した
+
+        door.SetActive(true);
+        doseOpenDoor = false;
     }
 
     private void OnTriggerEnter(Collider other){
@@ -77,7 +83,7 @@ public class ButtonManager : MonoBehaviour
         sphere.AddComponent<Rigidbody>();
     }
 
-    public void PushButton1(){ 
+    public void PushButton1(){
         ChangeColor(0);
     }
 
@@ -89,16 +95,22 @@ public class ButtonManager : MonoBehaviour
         ChangeColor(2);
     }
 
-    public void ChangeColor(int buttonNo){
+    public void ChangeColor(int buttonNo){//キューブの色を変更
         cubeColor[buttonNo] += 1;
-        if(cubeColor[buttonNo] <= COLOR_WHITE){
-            cube[buttonNo].GetComponent<Renderer>().material.color = materials[cubeColor[buttonNo]].color;
+        if(cubeColor[buttonNo] > COLOR_WHITE){
+            cubeColor[buttonNo] = COLOR_RED;//cubeColorがオーバーフローしたときに0にする
         }
-        else{
-            cube[buttonNo].GetComponent<Renderer>().material.color = materials[0].color;
-            cubeColor[buttonNo] = COLOR_RED;
+        cube[buttonNo].GetComponent<Renderer>().material.color = materials[cubeColor[buttonNo]].color;
+        //<Renderer>().materialで呼び出すと複製され続けてしまうため、Destroyしなければならない
+
+        if((cubeColor[0] == COLOR_BLUE)
+        &&(cubeColor[1] == COLOR_WHITE)
+        &&(cubeColor[2] == COLOR_RED)){
+            if(doseOpenDoor == false){
+                door.SetActive(false);
+                doseOpenDoor = true;
+                Debug.Log("動作している");
+            }
         }
-    
     }
-   
 }
