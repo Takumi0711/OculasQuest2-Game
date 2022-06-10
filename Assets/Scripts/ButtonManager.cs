@@ -113,6 +113,8 @@ public class ButtonManager : MonoBehaviour
                 door.SetActive(false);
                 //ドアを削除
                 doseOpenDoor = true;
+                Resources.UnloadUnusedAssets ();
+                //これで余分なアセットを削除
             }
         }
     }
