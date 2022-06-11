@@ -13,12 +13,16 @@ public class ButtonManager : MonoBehaviour
     public UnityEvent onPress; //ボタンを押したときのイベント（これは今回設定してない）
     public UnityEvent onRelease;
     GameObject presser;
-    AudioSource sound;
+
+    public AudioClip[] sounds = new AudioClip[2];
+    //AudioClipはCDみたいなもので、AudioSource(CDプレイヤー)がないと再生できない
+    AudioSource audioSource;
+
     bool isPressed;
     //boolはフラグ立て
 
-    //色を変えるためのキューブ
     public GameObject[] cube = new GameObject[3];
+    //色を変えるためのキューブ
 
     public Material[] materials = new Material[4];
     //4種類のマテリアルを設定
@@ -35,7 +39,8 @@ public class ButtonManager : MonoBehaviour
 
     void Start()
     {
-        sound = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
+        //AudioSourceコンポーネントを取得
         isPressed = false;
 
         cubeColor[0] = COLOR_RED;//つまり、cubeColor[0]は0ということ
@@ -61,7 +66,7 @@ public class ButtonManager : MonoBehaviour
             onPress.Invoke();
             //Invoke(Hogehoge, time)で、time秒後にHogehogeをする
             //今回は、設定したUnityEventのonPressを行う
-            sound.Play();
+            audioSource.Play();
             isPressed = true;
         }
     }
@@ -112,6 +117,8 @@ public class ButtonManager : MonoBehaviour
             if(doseOpenDoor == false){
                 door.SetActive(false);
                 //ドアを削除
+                audioSource.PlayOneShot(sounds[1]);
+                //sounds[1]を一回再生する
                 doseOpenDoor = true;
                 Resources.UnloadUnusedAssets ();
                 //これで余分なアセットを削除

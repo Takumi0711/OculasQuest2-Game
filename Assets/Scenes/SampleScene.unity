@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2519e3e8695c97f4fb2ab0d80a329a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  door: {fileID: 112932310}
   button: {fileID: 530281255}
   onPress:
     m_PersistentCalls:
@@ -326,6 +327,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  sounds:
+  - {fileID: 8300000, guid: 56fe077fa3d84f24c951589f5d187be2, type: 3}
+  - {fileID: 8300000, guid: 7af8171318058a144bc1208ad2f60abe, type: 3}
   cube:
   - {fileID: 1420491510}
   - {fileID: 2130557135}
@@ -580,6 +584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2519e3e8695c97f4fb2ab0d80a329a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  door: {fileID: 112932310}
   button: {fileID: 306155962}
   onPress:
     m_PersistentCalls:
@@ -611,6 +616,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  sounds:
+  - {fileID: 8300000, guid: 56fe077fa3d84f24c951589f5d187be2, type: 3}
+  - {fileID: 8300000, guid: 7af8171318058a144bc1208ad2f60abe, type: 3}
   cube:
   - {fileID: 1420491510}
   - {fileID: 2130557135}
@@ -1948,6 +1956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2519e3e8695c97f4fb2ab0d80a329a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  door: {fileID: 112932310}
   button: {fileID: 1212936351}
   onPress:
     m_PersistentCalls:
@@ -1979,6 +1988,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  sounds:
+  - {fileID: 8300000, guid: 56fe077fa3d84f24c951589f5d187be2, type: 3}
+  - {fileID: 8300000, guid: 7af8171318058a144bc1208ad2f60abe, type: 3}
   cube:
   - {fileID: 1420491510}
   - {fileID: 2130557135}
