@@ -54,6 +54,7 @@ public class ButtonManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other){
         /*OnTriggerEnter＝トリガーオブジェクトに侵入した瞬間呼び出される
+        これを使うには、isTriggerにチェックを入れて当たり判定をなくさなければならない
         OnTriggerStay＝トリガーオブジェクトに侵入している間呼び出される
         OnTriggerExit＝トリガーオブジェクトから脱出した瞬間呼び出される
         トリガーオブジェクトはIsTriggerにチェックを入れないと使用できない*/
