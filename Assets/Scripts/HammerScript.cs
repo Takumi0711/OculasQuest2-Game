@@ -12,6 +12,8 @@ public class HammerScript : MonoBehaviour
 
     public GameObject textBox;
 
+    public GameObject door;
+
     private Rigidbody rb;
     //Rigidbody型の変数
     private OVRGrabbable grabbed;
@@ -24,6 +26,7 @@ public class HammerScript : MonoBehaviour
         piggyBunk.SetActive(true);
         hammer.SetActive(true);
         textBox.SetActive(false);
+        door.SetActive(true);
 
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
@@ -32,11 +35,11 @@ public class HammerScript : MonoBehaviour
     }
 
     void Update(){
-        if(grabbed.isGrabbed){
-            rb.isKinematic = true;
+        if(grabbed.isGrabbed){//持たれているときとそうでないときで物理演算をオンオフする
+            rb.isKinematic = false;
         }
         else{
-            rb.isKinematic = false;
+            rb.isKinematic = true;
         }
     }
 
@@ -46,6 +49,7 @@ public class HammerScript : MonoBehaviour
             audioSource.PlayOneShot(sound);
             //piggyBunk.SetActive(false);
             textBox.SetActive(true);
+            door.SetActive(false);
         }
     }
 }
