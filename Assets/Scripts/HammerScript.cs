@@ -12,14 +12,32 @@ public class HammerScript : MonoBehaviour
 
     public GameObject textBox;
 
+    private Rigidbody rb;
+    //Rigidbody型の変数
+    private OVRGrabbable grabbed;
+    //OVRGrabbable型の変数
+
     // Start is called before the first frame update
     void Start()
     {
+        //ゲーム起動時のオンオフ
         piggyBunk.SetActive(true);
         hammer.SetActive(true);
         textBox.SetActive(false);
 
         audioSource = GetComponent<AudioSource>();
+        rb = GetComponent<Rigidbody>();
+        grabbed = GetComponent<OVRGrabbable>();
+        //それぞれのコンポートを取得
+    }
+
+    void Update(){
+        if(grabbed.isGrabbed){
+            rb.isKinematic = true;
+        }
+        else{
+            rb.isKinematic = false;
+        }
     }
 
     private void OnCollisionEnter(Collision collision){
@@ -31,3 +49,5 @@ public class HammerScript : MonoBehaviour
         }
     }
 }
+
+
