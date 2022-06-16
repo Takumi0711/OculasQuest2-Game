@@ -10,11 +10,14 @@ public class HammerScript : MonoBehaviour
     public AudioClip sound;
     private AudioSource audioSource;
 
+    public GameObject textBox;
+
     // Start is called before the first frame update
     void Start()
     {
         piggyBunk.SetActive(true);
         hammer.SetActive(true);
+        textBox.SetActive(false);
 
         audioSource = GetComponent<AudioSource>();
     }
@@ -23,7 +26,8 @@ public class HammerScript : MonoBehaviour
         //衝突した相手の情報をCollision型で返す（Collision型には様々な情報が含まれている）
         if(collision.gameObject.CompareTag("PiggyBunk")){
             audioSource.PlayOneShot(sound);
-            piggyBunk.SetActive(false);
+            //piggyBunk.SetActive(false);
+            textBox.SetActive(true);
         }
     }
 }
