@@ -7,7 +7,7 @@ public class HammerScript : MonoBehaviour
     public GameObject piggyBunk;
     public GameObject hammer;
 
-    public AudioClip sound;
+    public AudioClip[] sounds = new AudioClip[2];
     private AudioSource audioSource;
 
     public GameObject textBox;
@@ -46,7 +46,7 @@ public class HammerScript : MonoBehaviour
     private void OnCollisionEnter(Collision collision){
         //衝突した相手の情報をCollision型で返す（Collision型には様々な情報が含まれている）
         if(collision.gameObject.CompareTag("PiggyBunk")){
-            audioSource.PlayOneShot(sound);
+            audioSource.PlayOneShot(sounds[0]);
             //piggyBunk.SetActive(false);
             textBox.SetActive(true);
             door.SetActive(false);
