@@ -13,6 +13,11 @@ public class PlayerMovement : MonoBehaviour
     private float gravity = 9.8f;
     private float moveH;
     private float moveV;
+
+    [Range(0.1f, 2f)]
+	public float crouchHeight = 1f;  // しゃがんだ時の背の高さ
+	[Range(0.1f, 5f)]
+	public float normalHeight = 2f;  // 通常時の背の高さ
  
     void Start()
     {
@@ -31,5 +36,16 @@ public class PlayerMovement : MonoBehaviour
         moveDir.y -= gravity * Time.deltaTime;
  
         controller.Move(moveDir * Time.deltaTime * speed);
+
+        Crouch();
+    }
+
+    private void Crouch(){
+        if(Input.GetKey(KeyCode.LeftCommand)){
+            controller.height = crouchHeight;
+        }
+        else{
+            controller.height = normalHeight;
+        }
     }
 }
