@@ -14,19 +14,21 @@ public class PlayerMovement : MonoBehaviour
     private float moveH;
     private float moveV;
 
-    [Range(0.1f, 2f)]
-	public float crouchHeight = 1f;  // しゃがんだ時の背の高さ
-	[Range(0.1f, 5f)]
-	public float normalHeight = 2f;  // 通常時の背の高さ
+    private bool doseCrouching;
+    //しゃがんでいるかどうかのフラグ
  
     void Start()
     {
         controller = GetComponent<CharacterController>();
+
+        controller.height = 1.0f;
+        doseCrouching = false;
     }
  
     void Update()
     {
         moveH = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick).x;
+        //Getは、指定したボタン（今回はスティック）を押し続けているという判定
         moveV = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick).y;
         movement = new Vector3(moveH, 0, moveV);
  
@@ -41,11 +43,16 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Crouch(){
-        if(Input.GetKey(KeyCode.LeftCommand)){
-            controller.height = crouchHeight;
-        }
-        else{
-            controller.height = normalHeight;
+        if(OVRInput.GetDown(OVRInput.Button.Two)){
+            if(doseCrouching == false){
+                //GetDownは指定したボタン（またはスティックを押したときという判定）
+                controller.height = 0.5f;
+                //ボタンが押されたときにCharacterControllerのHeightを変える
+                doseCrouching = true;
+            }else{
+                controller.height = 1.0f;
+                doseCrouching = false;
+            }
         }
     }
 }
