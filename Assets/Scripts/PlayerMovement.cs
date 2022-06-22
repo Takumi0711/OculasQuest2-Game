@@ -16,13 +16,22 @@ public class PlayerMovement : MonoBehaviour
 
     private bool doseCrouching;
     //しゃがんでいるかどうかのフラグ
- 
+
+    public float JumpForce = 0.3f;
+    private Vector3 MoveThrottle = Vector3.zero;
+
+    void Awake()
+    {
+        //Controller = gameObject.GetComponent<CharacterController>();
+    }
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
 
         controller.height = 1.0f;
         doseCrouching = false;
+
     }
  
     void Update()
@@ -40,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(moveDir * Time.deltaTime * speed);
 
         Crouch();
+        //Jump();
     }
 
     private void Crouch(){
@@ -55,4 +65,14 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    /*public bool Jump(){
+		if (!Controller.isGrounded)
+			return false;
+
+		MoveThrottle += new Vector3(0, transform.lossyScale.y * JumpForce, 0);
+
+		return true;
+	}*/
+
 }
