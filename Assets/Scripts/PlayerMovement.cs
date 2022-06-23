@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(moveDir * Time.deltaTime * speed);
 
         Crouch();
-        //Jump();
+        //それぞれのコンポートをJump();
     }
 
     private void Crouch(){

@@ -6,6 +6,7 @@ public class HammerScript : MonoBehaviour
 {
     public GameObject piggyBunk;
     public GameObject hammer;
+    public GameObject key;
 
     public AudioClip[] sounds = new AudioClip[2];
     private AudioSource audioSource;
@@ -28,6 +29,7 @@ public class HammerScript : MonoBehaviour
         textBox[0].SetActive(false);
         textBox[1].SetActive(false);
         door.SetActive(true);
+        key.SetActive(false);
 
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
@@ -50,7 +52,7 @@ public class HammerScript : MonoBehaviour
             audioSource.PlayOneShot(sounds[0]);
             piggyBunk.SetActive(false);
             textBox[1].SetActive(true);
-            door.SetActive(false);
+            key.SetActive(true);
         }
     }
 }
